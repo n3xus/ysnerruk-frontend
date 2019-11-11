@@ -1,3 +1,5 @@
+This is a project for ELEC5619 course. Members contributed to the project are Kimbrian, Kirk, Ali, Edwin and Gubi.
+
 # Description
 This is an Angular 8 SPA. Currently the app offers no functionality
 
