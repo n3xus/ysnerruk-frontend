@@ -1,0 +1,81 @@
+<mat-card class='card'>
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+  <div *ngIf='offer'>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <h3>
+        {{offer.description}}
+      </h3>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <div fxFlex="200px" class="offer-label">
+        ID:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{offer.id}}
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Exchange Rate:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{(offer.receiveAmount / offer.offerAmount).toFixed(2) }} {{offer.offerCurrency}}/{{offer.receiveCurrency}}
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <div fxFlex="200px" class="offer-label">
+        User:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5%">
+          <div>
+            <img mat-card-avatar src="/assets/img/user/{{offer.maker.id % 10}}.jpg" alt="{{offer.maker.username}}"
+                 width="200" height="200"/>
+          </div>
+          <div>
+            {{offer.maker.username}} (Trade count: {{offer.maker.tradeCount}}, rating {{ offer.maker.rating }} %)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Offer:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{offer.offerCurrency}} {{offer.offerAmount}}
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Receive:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{offer.receiveCurrency}} {{offer.receiveAmount}}
+      </div>
+    </div>
+
+    <div fxLayout="row" class="offer-row">
+      <div fxFlex="200px" class="offer-label" xLayoutAlign="end center">
+        <button mat-flat-button
+                (click)='onBack()'
+                color="primary">
+          <i class="material-icons">
+            arrow_left
+          </i> Back
+        </button>
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <button mat-flat-button
+                (click)='accept()'
+                color="accent">
+          <i class="material-icons">
+            attach_money
+          </i> Accept
+        </button>
+      </div>
+    </div>
+  </div>
+
+</mat-card>

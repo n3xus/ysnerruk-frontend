@@ -1,0 +1,49 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened>
+    <mat-card>
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon matListIcon>forum</mat-icon>
+          </ng-template>
+          <mat-list class="conversations">
+            <mat-list-item *ngFor="let sender of senders" (click)="selectConversation(sender.username, sender.id)">
+              <mat-icon matListIcon>forum</mat-icon>
+              <p>{{sender.username}}</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </mat-sidenav>
+  <section class="empty-conversation" *ngIf="!selectedConversation">
+    <h1 class="mat-display-1">Select a conversation from the left to start chatting</h1>
+  </section>
+  <section *ngIf="selectedConversation">
+    <mat-list dense class="conversation-history mat-typography">
+        <mat-list-item *ngFor="let convo of selectedConversation" [dir]="convo.type == 'received' ? 'ltr' : 'rtl'">
+          <div *ngIf="convo.type == 'received'" class="talk-bubble-received tri-right left-top">
+            <p *ngIf="convo.type == 'received'" class='talktext'>{{convo.message}}</p>
+          </div>
+          <div *ngIf="convo.type == 'sent'" class="talk-bubble tri-right right-top">
+            <p *ngIf="convo.type == 'sent'" class='talktext' dir="ltr">{{convo.message}}</p>
+          </div>
+
+          </mat-list-item>
+    </mat-list>
+    <!-- <mat-list dense class="conversation-history mat-typography">
+      <mat-list-item *ngFor="let event of events; index as i" [dir]="event.from === selectedConversation.me.id ? 'rtl' : 'ltr'">
+        <img *ngIf="event.type == 'text'" matListAvatar matTooltip="{{selectedConversation.members[event.from].user.name}}" src="https://randomuser.me/api/portraits/thumb/lego/{{i}}.jpg"
+        />
+        <p *ngIf="event.type == 'text'" [dir]="'ltr'">{{event.body.text}}</p>
+      </mat-list-item>
+    </mat-list> -->
+    <div class="conversation-input">
+      <mat-divider></mat-divider>
+      <mat-form-field class="full-width" (keyup.enter)="sendText(text)">
+        <input matInput placeholder="Start chatting..." name="text" [(ngModel)]="text">
+        <mat-icon matSuffix (click)="sendText(text)">send</mat-icon>
+      </mat-form-field>
+    </div>
+  </section> 
+</mat-sidenav-container>

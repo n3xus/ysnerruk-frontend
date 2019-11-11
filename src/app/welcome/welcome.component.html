@@ -1,0 +1,6 @@
+<div fxFlex fxLayout="column" fxLayoutAlign="center center">
+  <p>Welcome to Ysnerruk, the foreign currency marketplace <b>for the people</b>!</p>
+  <p *ngIf="loggedIn()"><button type="button" mat-flat-button color="accent" routerLink="/trade">Start trading!</button></p>
+  <p *ngIf="!loggedIn()">Login or sign up below</p>
+  <app-register-login *ngIf="!loggedIn()"></app-register-login>
+</div>

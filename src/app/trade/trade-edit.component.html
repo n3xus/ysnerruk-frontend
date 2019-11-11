@@ -1,0 +1,53 @@
+<mat-card>
+  <form *ngIf="offer" [formGroup]="editOfferForm">
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Offer Amount" formControlName="offerAmount">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Offering Currency</mat-label>
+      <mat-select id="offerCurrency" formControlName="offerCurrency" required>
+        <mat-select-trigger>
+          <img width="16" height="16"
+               src="/assets/img/flag/{{ editOfferForm.controls.offerCurrency.value | lowercase}}.svg"
+               alt="{{ editOfferForm.controls.offerCurrency.value }}"/> {{ editOfferForm.controls.offerCurrency.value }}
+        </mat-select-trigger>
+        <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                    value="{{currency}}">
+          <img width="16" height="16"
+               src="/assets/img/flag/{{currency | lowercase}}.svg"
+               alt="{{currency}}"/> {{ currency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Receive Amount" formControlName="receiveAmount">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Receiving Currency</mat-label>
+      <mat-select id="receiveCurrency" formControlName="receiveCurrency" required>
+        <mat-select-trigger>
+          <img width="16" height="16"
+               src="/assets/img/flag/{{ editOfferForm.controls.receiveCurrency.value | lowercase}}.svg"
+               alt="{{ editOfferForm.controls.receiveCurrency.value }}"/> {{ editOfferForm.controls.receiveCurrency.value }}
+        </mat-select-trigger>
+        <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                    value="{{currency}}">
+          <img width="16" height="16"
+               src="/assets/img/flag/{{currency | lowercase}}.svg"
+               alt="{{currency}}"/> {{ currency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-card-actions>
+    <app-loading-overlay [loading]="isLoading">
+      <button type="submit" mat-flat-button color="primary" (click)="editDeleteButton('edit')"><mat-icon>edit</mat-icon>Edit Trade</button>
+    </app-loading-overlay>
+    <app-loading-overlay [loading]="isLoading">
+      <button type="button" mat-flat-button color="warn" (click)="editDeleteButton('delete')"><mat-icon>delete</mat-icon>Delete Trade</button>
+    </app-loading-overlay>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="createReviewForm" (ngSubmit)="createReview()">
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Rating" formControlName="rating">
+          <mat-option [value]="true">Positive</mat-option>
+          <mat-option [value]="false">Negative</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-flat-button color="primary">Create Review</button>
+  </form>
+</mat-card>

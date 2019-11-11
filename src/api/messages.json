@@ -1,0 +1,180 @@
+[
+    {
+        "messageid": 0,
+        "fromuserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message"
+    },
+
+    {
+        "messageid": 1,
+        "fromuserid": {
+            "userName": "John",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message from John"
+    },
+
+    {
+        "messageid": 2,
+        "fromuserid": {
+            "userName": "Sam",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message from Sam"
+    },
+
+    {
+        "messageid": 3,
+        "fromuserid": {
+            "userName": "Susan",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Josh",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message"
+    },
+
+
+    {
+        "messageid": 4,
+        "fromuserid": {
+            "userName": "Karen",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message"
+    },
+
+    {
+        "messageid": 5,
+        "fromuserid": {
+            "userName": "James",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message"
+    },
+
+    {
+        "messageid": 6,
+        "fromuserid": {
+            "userName": "Adam",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message"
+    },
+    {
+        "messageid": 2,
+        "fromuserid": {
+            "userName": "Sam",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is another from Sam"
+    },
+    {
+        "messageid": 2,
+        "fromuserid": {
+            "userName": "Michael",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "touserid": {
+            "userName": "Sam",
+            "photoUrl": "/assets/img/user/1.jpg",
+            "email": "michael@mail.com",
+            "tradeCount": 10,
+            "rating": 99
+        },
+        "sentdate": "2019-01-16",
+        "details": "This is a message to Sam"
+    }
+]

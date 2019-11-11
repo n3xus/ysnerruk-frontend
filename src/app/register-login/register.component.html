@@ -1,0 +1,23 @@
+<form [formGroup]="registerForm" fxLayout="column" (ngSubmit)="register()">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" formControlName="password">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" autocomplete="new-password" placeholder="Confirm Password"
+           formControlName="passwordRepeat">
+  </mat-form-field>
+
+  <app-loading-overlay [loading]="isLoading">
+    <button mat-flat-button color="primary">Register</button>
+  </app-loading-overlay>
+
+</form>

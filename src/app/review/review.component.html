@@ -1,0 +1,155 @@
+<mat-card class='card'>
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <div *ngFor='let review of reviews; let i = index'>
+    <h1>
+      Review {{i + 1}}
+    </h1>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <h2>
+        Offer Details
+      </h2>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <h3>
+        {{review.offer.description}}
+      </h3>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <div fxFlex="200px" class="offer-label">
+        ID:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{review.offer.id}}
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Exchange Rate:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{(review.offer.receiveAmount / review.offer.offerAmount).toFixed(2) }} {{review.offer.offerCurrency}}/{{review.offer.receiveCurrency}}
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <div fxFlex="200px" class="offer-label">
+        Maker:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5%">
+          <div>
+            <img mat-card-avatar src="/assets/img/user/{{review.offer.maker.id % 10}}.jpg" alt="{{review.offer.maker.username}}"
+                 width="200" height="200"/>
+          </div>
+          <div>
+            {{review.offer.maker.username}} (Trade count: {{review.offer.maker.tradeCount}}, rating {{ review.offer.maker.rating }} %)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <div fxFlex="200px" class="offer-label">
+        Taker:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5%">
+          <div>
+            <img mat-card-avatar src="/assets/img/user/{{review.offer.taker.id % 10}}.jpg" alt="{{review.offer.maker.username}}"
+                 width="200" height="200"/>
+          </div>
+          <div>
+            {{review.offer.taker.username}} (Trade count: {{review.offer.taker.tradeCount}}, rating {{ review.offer.taker.rating }} %)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Offer:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{review.offer.offerCurrency}} {{review.offer.offerAmount}}
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Receive:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{review.offer.receiveCurrency}} {{review.offer.receiveAmount}}
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" class="offer-row">
+      <h2>
+        Review Details
+      </h2>
+    </div>
+    <br>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Rating:
+      </div>
+      <div *ngIf='review.rating'>
+        <div fxFlex="50%" class="offer-text">
+           <mat-icon>thumb_up</mat-icon>
+        </div>
+      </div>
+      <div *ngIf='!review.rating'>
+        <div fxFlex="50%" class="offer-text">
+           <mat-icon>thumb_down</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Description:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        {{review.description}}
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Reviewed By:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5%">
+          <div>
+            <img mat-card-avatar src="/assets/img/user/{{review.reviewBy.id % 10}}.jpg" alt="{{review.reviewBy.username}}"
+                 width="200" height="200"/>
+          </div>
+          <div>
+            {{review.reviewBy.username}} (Trade count: {{review.reviewBy.tradeCount}}, rating {{ review.reviewBy.rating }} %)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%">
+      <div fxFlex="200px" class="offer-label">
+        Reviewed For:
+      </div>
+      <div fxFlex="50%" class="offer-text">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5%">
+          <div>
+            <img mat-card-avatar src="/assets/img/user/{{review.reviewFor.id % 10}}.jpg" alt="{{review.reviewFor.username}}"
+                 width="200" height="200"/>
+          </div>
+          <div>
+            {{review.reviewFor.username}} (Trade count: {{review.reviewFor.tradeCount}}, rating {{ review.reviewFor.rating }} %)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" class="offer-row">
+    <div fxFlex="200px" class="offer-label" xLayoutAlign="end center">
+      <button mat-flat-button
+      (click)='onBack()'
+      color="primary">
+      <i class="material-icons">
+        arrow_left
+      </i> Back
+    </button>
+  </div>
+</div>
+</mat-card>

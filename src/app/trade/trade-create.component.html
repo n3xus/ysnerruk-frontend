@@ -1,0 +1,48 @@
+<mat-card>
+<form [formGroup]="createOfferForm" (ngSubmit)="createOffer()">
+  <mat-form-field>
+    <input matInput placeholder="Description" formControlName="description">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Offer Amount" formControlName="offerAmount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Offering Currency</mat-label>
+    <mat-select id="offerCurrency" formControlName="offerCurrency" required>
+      <mat-select-trigger>
+        <img width="16" height="16"
+             src="/assets/img/flag/{{ createOfferForm.controls.offerCurrency.value | lowercase}}.svg"
+             alt="{{ createOfferForm.controls.offerCurrency.value }}"/> {{ createOfferForm.controls.offerCurrency.value }}
+      </mat-select-trigger>
+      <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                  value="{{currency}}">
+        <img width="16" height="16"
+             src="/assets/img/flag/{{currency | lowercase}}.svg"
+             alt="{{currency}}"/> {{ currency}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Receive Amount" formControlName="receiveAmount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Receiving Currency</mat-label>
+    <mat-select id="receiveCurrency" formControlName="receiveCurrency" required>
+      <mat-select-trigger>
+        <img width="16" height="16"
+             src="/assets/img/flag/{{ createOfferForm.controls.receiveCurrency.value | lowercase}}.svg"
+             alt="{{ createOfferForm.controls.receiveCurrency.value }}"/> {{ createOfferForm.controls.receiveCurrency.value }}
+      </mat-select-trigger>
+      <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                  value="{{currency}}">
+        <img width="16" height="16"
+             src="/assets/img/flag/{{currency | lowercase}}.svg"
+             alt="{{currency}}"/> {{ currency}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-loading-overlay [loading]="isLoading">
+  <button mat-flat-button color="primary">Create Trade</button>
+  </app-loading-overlay>
+</form>
+</mat-card>

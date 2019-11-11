@@ -1,0 +1,42 @@
+.offer-table {
+  width: 100%;
+}
+
+.column-text {
+  font-size: large;
+}
+
+.mat-column-maker {
+  max-width: 50px;
+}
+
+.mat-column-taker {
+  max-width: 50px;
+}
+
+.mat-column-description {
+  max-width: 150px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-receiveAmount {
+  max-width: 50px;
+}
+
+.mat-column-offerAmount {
+  max-width: 50px;
+}
+
+.mat-column-exchangeRate {
+  max-width: 50px;
+}
+
+.offer-table-card {
+  margin-top: 10px;
+}

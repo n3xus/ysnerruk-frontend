@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" fxLayout="column" (ngSubmit)="login()">
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" formControlName="password">
+  </mat-form-field>
+  <app-loading-overlay [loading]="isLoading">
+    <button mat-flat-button color="primary" [disabled]="isLoading">Login</button>
+  </app-loading-overlay>
+</form>

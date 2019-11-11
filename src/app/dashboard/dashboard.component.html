@@ -1,0 +1,134 @@
+<mat-card>
+  <form [formGroup]="filterForm" (ngSubmit)="filter()">
+    <mat-grid-list cols="5" rowHeight="75px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Offering Currency</mat-label>
+          <mat-select id="offerCurrency" formControlName="offerCurrency" required>
+            <mat-select-trigger>
+              <img width="16" height="16"
+                   src="/assets/img/flag/{{ filterForm.controls.offerCurrency.value | lowercase}}.svg"
+                   alt="{{ filterForm.controls.offerCurrency.value }}"/> {{ filterForm.controls.offerCurrency.value }}
+            </mat-select-trigger>
+            <mat-option value="All"><img width="16" height="16"
+                                         src="/assets/img/flag/all.svg"
+                                         alt="All"/> All
+            </mat-option>
+            <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                        value="{{currency}}">
+              <img width="16" height="16"
+                   src="/assets/img/flag/{{currency | lowercase}}.svg"
+                   alt="{{currency}}"/> {{ currency}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="button" mat-flat-button (click)="swapCurrency()">
+          <mat-icon aria-hidden="false" aria-label="Swap">swap_horiz</mat-icon>
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Receiving Currency</mat-label>
+          <mat-select id="receiveCurrency" formControlName="receiveCurrency" required>
+            <mat-select-trigger>
+              <img width="16" height="16"
+                   src="/assets/img/flag/{{ filterForm.controls.receiveCurrency.value | lowercase}}.svg"
+                   alt="{{ filterForm.controls.receiveCurrency.value }}"/> {{ filterForm.controls.receiveCurrency.value }}
+            </mat-select-trigger>
+            <mat-option value="All"><img width="16" height="16"
+                                         src="/assets/img/flag/all.svg"
+                                         alt="All"/> All
+            </mat-option>
+            <mat-option *ngFor="let currency of acceptedCurrencies" [value]="currency"
+                        value="{{currency}}">
+              <img width="16" height="16"
+                   src="/assets/img/flag/{{currency | lowercase}}.svg"
+                   alt="{{currency}}"/> {{ currency}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button type="submit" mat-flat-button color="primary">
+          <mat-icon aria-hidden="false" aria-label="Example search icon">search</mat-icon>
+          Search
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-card>
+
+<mat-card class="offer-table-card">
+
+    <!--Offer Table-->
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <div class="mat-tbl-container">
+
+  </div>
+    <table mat-table [dataSource]="dataSource" matSort class="offer-table">
+
+      <ng-container matColumnDef="maker">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="column-text" width="300">Maker</span></th>
+        <td mat-cell *matCellDef="let element">
+          <img mat-card-avatar src="/assets/img/user/{{element.maker.id % 10}}.jpg" alt="{{element.maker.username}}" width="200" height="200"/>
+          <span>{{element.maker.username}} ({{element.maker.tradeCount}}, {{element.maker.rating}}%)</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="taker">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="column-text">Taker</span></th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.taker == undefined; then thenBlock; else elseBlock"></div>
+          <ng-template #thenBlock>
+          </ng-template>
+          <ng-template #elseBlock>
+            <img mat-card-avatar src="/assets/img/user/{{element.taker.id % 10}}.jpg" alt="{{element.taker.username}}" width="200" height="200"/>
+            <span>{{element.taker.username}} ({{element.taker.tradeCount}}, {{element.taker.rating}}%)</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="column-text">Decription</span></th>
+        <td mat-cell *matCellDef="let element"> {{element.description }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="offerAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="column-text">Offer Amount</span></th>
+        <td mat-cell *matCellDef="let element"> {{element.offerAmount }} {{element.offerCurrency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="receiveAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="column-text">Receive Amount</span></th>
+        <td mat-cell *matCellDef="let element"> {{element.receiveAmount }} {{element.receiveCurrency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="exchangeRate">
+        <th mat-header-cell *matHeaderCellDef><span class="column-text">Exchange Rate</span></th>
+        <td mat-cell *matCellDef="let element"> {{(element.receiveAmount / element.offerAmount).toFixed(2) }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef><span class="column-text">Actions</span></th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="element.taker == undefined; then thenBlock; else elseBlock"></div>
+            <ng-template #thenBlock>
+              <a mat-flat-button color="primary" [routerLink]="['/edit', element.id]">
+                Edit
+              </a>
+            </ng-template>
+            <ng-template #elseBlock>
+              <a mat-flat-button color="primary" [routerLink]="['/review', element.id]">
+                Review
+              </a>
+            </ng-template>
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+    <mat-paginator [length]="offers?.length" [pageSize]="30"></mat-paginator>
+</mat-card>
